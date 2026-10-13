@@ -1,0 +1,498 @@
+/* ==========================================================================
+   PARTIE 1 : CONFIGURATION GLOBALE, NETTOYAGE ET ACCUEIL FIXED
+   ========================================================================== */
+
+/* 1. Style commun à TOUTES les pages (Accueil + Portfolio) */
+body {
+    margin: 0; 
+    font-family: 'Montserrat', sans-serif;
+    background-color: #5C4638; /* Marron chaud */
+    
+    display: flex;
+    flex-direction: column; 
+    align-items: center;     
+    min-height: 100vh;       
+    box-sizing: border-box;  
+    padding: 40px 0;         
+}
+
+/* 2. Le style appliué UNIQUEMENT à l'accueil pour figer l'écran */
+body.page-accueil {
+    height: 100vh;           
+    overflow: hidden;        
+    box-sizing: border-box;  
+    
+    /* MODIFICATION : On sépare les espaces. 40px strictly en haut, 20px en bas */
+    padding-top: 40px;       /* Pousse la carte vers le bas de 40px */
+    padding-bottom: 20px;    
+    
+    justify-content: center; 
+}
+
+
+/* C'est ici qu'on applique le centrage vertical automatique uniquement pour l'accueil */
+body.page-accueil .ma-carte-de-visite {
+    margin: auto 0;          /* <-- C'est ce "auto" qui calcule l'espace vide restant en haut et en bas */
+}
+
+/* 3. La structure de base des cartes */
+.ma-carte-de-visite {
+    /* 1. Applique ta couleur beige lin comme couleur de fond de la carte */
+    background-color: #F6F1EA; 
+    
+    /* 2. Crée une zone de sécurité (de l'air) de 30 pixels tout autour à l'INTÉRIEUR de la carte. 
+          Cela empêche ton logo ou tes textes de coller brutalement aux bords. */
+    padding: 30px;           
+    
+    /* 3. Arrondit les quatre coins de la carte avec un rayon de 15 pixels pour un effet visuel très doux. */
+    border-radius: 15px;     
+    
+    /* 4. Dessine une ombre portée discrète sous la carte pour lui donner du relief (effet 3D) :
+          - 0 : pas de décalage sur les côtés
+          - 4px : l'ombre descend de 4 pixels vers le bas
+          - 15px : l'ombre s'étale de manière floue sur 15 pixels
+          - rgba(0, 0, 0, 0.1) : l'ombre est noire mais transparente à 90% (très douce). */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
+    
+    /* 5. Centre automatiquement tous les textes, images et boutons qui seront écrits à l'intérieur. */
+    text-align: center;      
+    
+    /* 6. Bloque la largeur maximale de la carte à 350 pixels. 
+          Même sur un écran géant d'ordinateur, ta carte d'accueil restera fine et élégante. */
+    max-width: 350px;
+
+    margin: auto 0;          /* Calcule l'espace restant pour s'équilibrer */
+}
+
+
+h1 {
+    color: #5A4337; 
+    margin-top: 0;   
+    font-family: 'Cinzel', serif;
+}
+
+p {
+    color: #5A4337; 
+    font-size: 15px;
+    line-height: 1.5; 
+}
+
+/* 4. Gestion des logos et des boutons */
+.mon-logo {
+    max-width: 100%;   
+     width: 100%;       
+    height: auto;       
+    display: block;
+    margin: 0 auto 15px auto; /* Centre le logo et crée 15px d'espace en dessous */
+}
+
+/* ==========================================================
+   LOOK ET ANIMATION HARMONISÉS POUR LES BOUTONS EN MARRON
+   ========================================================== */
+
+.mon-bouton-lien {
+    background-color: #5A4337 !important; 
+    color: white !important;              
+    text-decoration: none !important;     
+    border-bottom: none !important;       
+    padding: 10px 20px !important;        
+    border-radius: 25px !important;       
+    border: none !important;              
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15) !important; 
+    
+    /* LIGNE MAGIQUE À AJOUTER : Permet au bouton de bouger verticalement */
+    display: inline-block !important; 
+    
+    transition: all 0.3s !important; 
+}
+
+.mon-bouton-lien:hover {
+    background-color: #423026 !important; 
+    text-decoration: none !important;     
+    
+    /* Force le soulèvement et l'ombre au survol */
+    transform: translateY(-3px) !important; 
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25) !important; 
+}
+
+
+.mon-bouton-mention {
+    display: inline-block; 
+    text-decoration: none; 
+    background-color: #5C4638; 
+    color: #A39689;
+    padding: 10px 20px;
+    font-size: 10px; 
+    border-radius: 0px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+
+/* ==========================================================================
+   PARTIE 2 : STRUCTURE DU PORTFOLIO (GRILLE & PIED DE PAGE)
+   ========================================================================== */
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;    /* Centre la ligne des réseaux horizontalement */
+    justify-content: center;/* Centre verticalement */
+    gap: 5px;          
+    margin-top: 5px;       /* Donne un peu plus d'espace sous les cartes */
+    margin-bottom: 0px;
+    width: 100%;            /* Force le footer à occuper toute la largeur pour bien centrer */
+}
+
+footer p {
+    color: #A39689;   
+    font-size: 13px;  
+    margin: 0;        
+}
+
+.portfolio-large {
+    max-width: 950px; 
+    width: 90%;
+}
+
+.grille-projets {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; 
+    margin: 30px 0 15px 0;
+}
+
+.fiche-projet {
+    background-color: #FFFFFF; 
+    border: 1px solid #EAE3D5; 
+    border-radius: 12px;
+    padding: 15px;
+    text-align: left; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+    font-family: 'Cinzel', serif;
+}
+
+.photo-principale {
+    width: auto;
+    height: 180px;
+    object-fit: cover; 
+    border-radius: 8px;
+    display: block;   
+    margin: 0 auto;   
+}
+
+.fiche-projet h3 {
+    margin: 12px 0 5px 0;
+    color: #3E342B;
+    font-size: 18px;
+    text-align: center; 
+    font-family: 'Cinzel', serif;
+  }
+
+.desc-courte {
+    font-size: 14px;
+    color: #7A6F64;
+    margin-bottom: 15px;
+     font-family: 'Allura', cursive;
+    font-size: 28px; /* On grossit la taille car les polices cursives s'écrivent souvent plus petit */
+}
+
+/* Le bouton de déroulement nettoyé */
+summary {
+    cursor: pointer;
+    color: #5C4638; 
+    font-weight: bold;
+    font-size: 14px;
+    outline: none;
+} *
+
+
+/* ==========================================================================
+   PARTIE 3 : BOUTON DE DÉTAILS ET DESIGNS D'ACTION (ROSE & BRUN)
+   ========================================================================== */
+
+/* 1. Conteneur global du bouton Plus de détails */
+summary {
+    cursor: pointer;
+    display: flex;
+    align-items: center;     
+    justify-content: left;   /* ALIGNEMENT MODIFIÉ PAR ALICE : Aligné proprement à gauche */
+    gap: 10px;               
+    margin: 15px 0;
+    outline: none;
+    user-select: none;       
+    list-style: none;        /* Cache le triangle sur Firefox */
+}
+
+summary::-webkit-details-marker {
+    display: none;           /* Cache le triangle sur Chrome/Safari/Edge */
+}
+
+/* 2. La bulle avec le + (NOUVELLE COULEUR ALICE : Vieux rose / Terracotta doux) */
+.bulle-plus {
+    background-color: #B8847D; 
+    color: white;              
+    width: 24px;               
+    height: 24px;              
+    border-radius: 50%;        
+    display: flex;
+    justify-content: center;   
+    align-items: center;       
+    font-size: 16px;
+    font-weight: bold;
+    transition: transform 0.3s, background-color 0.3s; 
+}
+
+.texte-details {
+    color: #5A4337;            
+    font-weight: bold;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+/* Effets de survol du bouton détails */
+summary:hover .bulle-plus {
+    background-color: #5C4638; /* Devient brun foncé au survol */
+    transform: scale(1.1);     
+}
+
+/* Si c'est ouvert ET survolé, on garde le zoom ET la rotation */
+details[open] summary:hover .bulle-plus {
+    transform: scale(1.1) rotate(45deg);
+}
+
+summary:hover .texte-details {
+    color: #5C4638;            
+}
+
+/* Quand le volet s'ouvre, le + pivote à 45° pour former un ✕ */
+details[open] .bulle-plus {
+    transform: rotate(45deg);
+    background-color: #5A4337; 
+}
+
+/* Contenu textuel caché à l'intérieur */
+.contenu-complementaire {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed #EAE3D5; 
+}
+
+.contenu-complementaire p {
+ /* LA LIGNE POUR ACTIVER ALLURA : */
+    font-family: 'Allura', cursive;
+    
+    /* ON REHAUSSE LA TAILLE (22px au lieu de 13px) pour une lecture parfaite */
+    font-size: 13px; 
+    
+    color: #5A5046;
+    margin-bottom: 10px;
+    line-height: 1.4; /* Ajuste l'espacement entre les lignes cursives */
+}
+
+/* ==========================================================================
+   PARTIE 4 : CARROUSEL HORIZONTAL & FLÈCHES JS (SANS DOUBLONS)
+   ========================================================================== */
+
+.carrousel-conteneur {
+    position: relative;
+    width: 100%;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.photos-defilement {
+    display: flex;             
+    overflow-x: hidden;        
+    scroll-behavior: smooth;   
+    width: 100%;
+    border-radius: 8px;
+}
+
+.photos-defilement img {
+    width: 100%;
+    height: 200px;             /* CORRECTION : Maintenu à 200px pour éviter que le défilement casse */
+    object-fit: cover;
+    flex-shrink: 0;            
+}
+
+/* Boutons flèches du carrousel */
+.fleche-js {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(62, 52, 43, 0.8);
+    color: white;
+    border: none;
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    transition: background 0.2s;
+}
+
+.fleche-js:hover {
+    background-color: #5C4638; /* CORRECTION : Applique ton BRUN FONCÉ au survol */
+}
+
+.fleche-gauche { left: 8px; }
+.fleche-droite { right: 8px; }
+
+/* Indique que l'image est cliquable pour zoomer */
+.cliquable {
+    cursor: zoom-in;
+}
+
+
+/* ==========================================================================
+   PARTIE 5 : LA FENÊTRE POPUP DE ZOOM (AJOUT SÉCURITÉ MANQUANTE)
+   ========================================================================== */
+
+.popup-photo {
+    position: relative;          
+    overflow: visible !important; 
+    border: none;
+    border-radius: 12px;
+    padding: 10px;
+    max-width: 85vw;  
+    max-height: 80vh; 
+    background-color: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.popup-photo img {
+    max-width: 100%;
+    max-height: 75vh;
+    display: block;
+    border-radius: 6px;
+    object-fit: contain; 
+}
+
+/* Bouton Fermer (La croix) */
+.bouton-fermer {
+    position: absolute;
+    top: -15px;         
+    right: -15px;       
+    background-color: #3E342B; 
+    color: white;
+    border: 2px solid white; 
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px;
+    z-index: 999;       
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s;
+}
+
+.bouton-fermer:hover {
+    background-color: #B8847D; /* Devient vieux rose au survol, très chic ! */
+}
+
+/* Fond sombre flouté en arrière-plan */
+.popup-photo::backdrop {
+    background-color: rgba(0, 0, 0, 0.7); 
+    backdrop-filter: blur(4px);            
+}
+
+/* PARTIE 3 */
+
+/* Style de la boîte de dialogue (Popup) */
+
+/* CORRECTION : Fusion des deux blocs ".popup-photo" en un seul propre et complet */
+.popup-photo {
+    position: relative;          /* Nécessaire pour placer le bouton fermer par rapport à la popup */
+    overflow: visible !important; /* Autorise le bouton de fermeture à dépasser des bords */
+    border: none;
+    border-radius: 12px;
+    padding: 10px;
+    max-width: 85vw;             /* Largeur ajustée à 85% de l'écran */
+    max-height: 80vh;            /* Hauteur ajustée à 80% de l'écran */
+    background-color: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Style de l'image agrandie dans la popup */
+.popup-photo img {
+    max-width: 100%;
+    max-height: 75vh;
+    display: block;
+    border-radius: 6px;
+    object-fit: contain; /* Évite de déformer ou de couper l'image en grand */
+}
+
+/* Le bouton pour fermer (la petite croix) */
+/* Style mis à jour pour le bouton de fermeture */
+.bouton-fermer {
+    position: absolute;
+    top: -15px;         /* Positionné légèrement en dehors en haut */
+    right: -15px;       /* Positionné légèrement en dehors à droite */
+    background-color: #3E342B; /* Couleur brun foncé assortie à ton thème */
+    color: white;
+    border: 2px solid white; /* Une bordure blanche pour bien le détacher */
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px;
+    z-index: 999;       /* FORCE le bouton à rester AU-DESSUS de la photo agrandie */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s;
+}
+
+.bouton-fermer:hover {
+    background-color: #5C4638; /* Devient BRUN FONCER au survol */
+}
+
+/* Effet magique : assombrir le fond du site quand la popup est ouverte */
+.popup-photo::backdrop {
+    background-color: rgba(0, 0, 0, 0.7); /* Fond noir transparent à 70% */
+    backdrop-filter: blur(4px);            /* Optionnel : floute légèrement le fond */
+}
+
+.reseaux-sociaux {
+    display: flex;
+    justify-content: center; /* Centre les deux boutons l'un à côté de l'autre */
+    gap: 5px;               /* Espace de 15px entre les deux boutons */
+}
+
+/* Style pour le texte Instagram et le bouton contact dans le footer */
+.reseaux-sociaux a {
+    color: white;               /* Émojis et texte en blanc pur pour bien lire */
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;                   /* Espace entre l'émoji et le texte */
+    padding: 10px 20px;         /* Boutons plus larges et plus hauts, plus agréables au clic */
+    background-color: #B8847D;  /* TA NOUVELLE COULEUR : Fond vieux rose / terracotta doux */
+    border: none;               /* On enlève l'ancienne bordure fine */
+    border-radius: 25px;        /* Forme capsule arrondie, comme ton bouton principal */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Petite ombre sous les boutons pour les décoller du fond */
+    transition: all 0.3s;
+}
+
+/* Effet au survol des deux liens du footer */
+.reseaux-sociaux a:hover {
+    background-color: #A26E67; /* Un vieux rose un peu plus soutenu et foncé au survol */
+    transform: translateY(-3px); /* Le bouton se soulève légèrement (effet dynamique) */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25); /* L'ombre s'accentue quand le bouton se soulève */
+}
+
