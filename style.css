@@ -64,6 +64,33 @@ body.page-accueil .ma-carte-de-visite {
     margin: auto 0;          /* Calcule l'espace restant pour s'équilibrer */
 }
 
+.ma-carte-de-visite-mentions {
+    /* 1. Applique ta couleur beige lin comme couleur de fond de la carte */
+    background-color: #F6F1EA; 
+    
+    /* 2. Crée une zone de sécurité (de l'air) de 30 pixels tout autour à l'INTÉRIEUR de la carte. 
+          Cela empêche ton logo ou tes textes de coller brutalement aux bords. */
+    padding: 30px;           
+    
+    /* 3. Arrondit les quatre coins de la carte avec un rayon de 15 pixels pour un effet visuel très doux. */
+    border-radius: 15px;     
+    
+    /* 4. Dessine une ombre portée discrète sous la carte pour lui donner du relief (effet 3D) :
+          - 0 : pas de décalage sur les côtés
+          - 4px : l'ombre descend de 4 pixels vers le bas
+          - 15px : l'ombre s'étale de manière floue sur 15 pixels
+          - rgba(0, 0, 0, 0.1) : l'ombre est noire mais transparente à 90% (très douce). */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
+    
+    /* 5. Centre automatiquement tous les textes, images et boutons qui seront écrits à l'intérieur. */
+    text-align: center;      
+    
+    /* 6. Bloque la largeur maximale de la carte à 350 pixels. 
+          Même sur un écran géant d'ordinateur, ta carte d'accueil restera fine et élégante. */
+    max-width: 350px;
+
+    margin: auto 0;          /* Calcule l'espace restant pour s'équilibrer */
+}
 
 h1 {
     color: #5A4337; 
