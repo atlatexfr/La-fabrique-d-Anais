@@ -64,12 +64,12 @@ body.page-accueil .ma-carte-de-visite {
     margin: auto 0;          /* Calcule l'espace restant pour s'équilibrer */
 }
 
-body.page-accueil .ma-carte-de-visite-mentions {
+body.page-accueil .mentions {
     margin: auto 0;          /* <-- C'est ce "auto" qui calcule l'espace vide restant en haut et en bas */
 }
 
 
-.ma-carte-de-visite-mentions {
+.mentions {
     /* 1. Applique ta couleur beige lin comme couleur de fond de la carte */
     background-color: #F6F1EA; 
     
