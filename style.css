@@ -87,7 +87,7 @@ body.page-accueil .ma-carte-de-visite {
     
     /* 6. Bloque la largeur maximale de la carte à 350 pixels. 
           Même sur un écran géant d'ordinateur, ta carte d'accueil restera fine et élégante. */
-    max-width: 350px;
+    max-width: 500px;
 
     margin: auto 0;          /* Calcule l'espace restant pour s'équilibrer */
 }
